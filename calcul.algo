@@ -1,0 +1,57 @@
+ALGORITHM Somme_Entiers
+VAR
+    T1, T2 : tableaux d’entiers
+    v1, v2 : tableaux de réels
+    i, j, n : entiers
+    somme : entier
+    ps : réel
+    trouve : booléen
+BEGIN
+T1 <- [3,1,7,9]
+T2 <- [2,4,1,9,3]
+somme <- 0
+POUR i DE 0 à longueur(T1)-1 FAIRE
+    trouve <- FAUX
+    POUR j DE 0 à longueur(T2)-1 FAIRE
+        SI T1[i] = T2[j] ALORS
+            trouve <- VRAI
+        FIN_SI
+    FIN_POUR
+    SI trouve = FAUX ALORS
+        somme <- somme + T1[i]
+    FIN_SI
+FIN_POUR
+POUR i DE 0 à longueur(T2)-1 FAIRE
+    POUR j DE 0 à longueur(T1)-1 FAIRE
+        SI T2[i] = T1[j] ALORS
+            trouve <- VRAI
+        FIN_SI
+    FIN_POUR
+    SI trouve = FAUX ALORS
+        somme <- somme + T2[i]
+    FIN_SI
+FIN_POUR
+AFFICHER(somme)
+
+v1 <- [1,2,3,]
+v2 <- [2,-1,0]
+n <- 3
+ps <- dot_product(v1, v2, n)
+SI ps = 0 ALORS
+    AFFICHER "Orthogonaux"
+SINON
+    AFFICHER "Non orthogonaux"
+END
+
+FONCTION dot_product(v1, v2, n : entiers) : réel
+VAR
+    i : entier
+    produit_scalaire : réel
+BEGIN
+produit_scalaire <- 0
+POUR i DE 0 à n-1 FAIRE
+    produit_scalaire <- produit_scalaire + v1[i] * v2[i]    
+FIN_POUR
+RETOURNER produit_scalaire
+END_FONCTION
+END
